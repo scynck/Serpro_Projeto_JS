@@ -115,3 +115,14 @@ function pesquisar(){
     saida.innerHTML = valorEntrada;
     idDiv.appendChild(saida);
 }
+
+function BubbleSort(){
+    var entrada = document.getElementById("Ordena").value;
+    var vetor = entrada.split(',').map(x => Number(x));
+    console.log(vetor[0] +  vetor[1]);
+    console.log(typeof(entrada));
+    var campoResposta = document.getElementById("OrdenadoBubble");
+    console.log(campoResposta);
+    campoResposta.innerHTML = ordenado;
+
+}
