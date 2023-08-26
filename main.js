@@ -119,10 +119,60 @@ function pesquisar(){
 function BubbleSort(){
     var entrada = document.getElementById("Ordena").value;
     var vetor = entrada.split(',').map(x => Number(x));
-    console.log(vetor[0] +  vetor[1]);
-    console.log(typeof(entrada));
+
+    for (let i = 0; i < vetor.length; i++) {
+        for (let j = 0; j < vetor.length-1 - i; j++) {
+            if (vetor[j] > vetor[j+1]) {
+                var aux = vetor[j];
+                vetor[j] = vetor[j+1];
+                vetor[j+1] = aux;
+                console.log(vetor[j])
+            }           
+        }       
+    }    
     var campoResposta = document.getElementById("OrdenadoBubble");
     console.log(campoResposta);
-    campoResposta.innerHTML = ordenado;
+    campoResposta.value = vetor;
+}
 
+
+function QuickSortDecorator(){
+    var entrada = document.getElementById("Ordena").value;
+    var vetor = entrada.split(',').map(x => Number(x));
+    var saida = QuickSort(vetor, 0, vetor.length-1);
+    var campoResposta = document.getElementById("OrdenadoQuick");
+    campoResposta.value = saida;
+}
+
+function QuickSort(vetor, iniVet, endVet){
+    var i = iniVet;
+    var j = endVet;
+    console.log(i)
+    console.log(j)
+    console.log((i + j)/2)
+    var pivo = vetor[Math.round((i + j)/2)]
+
+    while(i<=j){
+        while (vetor[i] < pivo){
+            i = i + 1;
+        }
+        while (vetor[j] > pivo){
+            j = j - 1;
+        }
+        if(i<=j){
+            let aux = vetor[i];
+            vetor[i] = vetor[j];
+            vetor[j] = aux;
+            i = i + 1;
+            j = j - 1;
+        }
+        if(iniVet < j){
+            QuickSort(vetor, iniVet, j);
+        }
+        if(i < endVet){
+            QuickSort(vetor, i, endVet);
+        }
+        
+    }
+    return vetor;
 }
